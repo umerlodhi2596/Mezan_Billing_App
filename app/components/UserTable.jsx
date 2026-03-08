@@ -32,7 +32,7 @@ export default function UsersTable() {
     queryKey: ["users", page],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:3000/api/users?page=${page}&limit=${limit}`,
+        `/api/users?page=${page}&limit=${limit}`,
       );
       const data = await res.json();
       return data;
@@ -46,7 +46,7 @@ export default function UsersTable() {
   // ------------------- CREATE ADMIN -------------------
   const createUserMutation = useMutation({
     mutationFn: async (body) => {
-      const res = await fetch(`http://localhost:3000/api/users`, {
+      const res = await fetch(`/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...body, role: "admin" }),
@@ -65,7 +65,7 @@ export default function UsersTable() {
   // ------------------- UPDATE ADMIN -------------------
   const updateUserMutation = useMutation({
     mutationFn: async ({ id, body }) => {
-      const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+      const res = await fetch(`/api/users/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -85,7 +85,7 @@ export default function UsersTable() {
   // ------------------- DELETE ADMIN -------------------
   const deleteUserMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+      const res = await fetch(`/api/users/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete admin");

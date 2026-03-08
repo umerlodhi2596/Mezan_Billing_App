@@ -38,7 +38,7 @@ export default function InvoiceItem({ invoice }) {
 
   const handleDelete = async (id) => {
 
-    const res = await fetch(`http://localhost:3000/api/invoice/${id}`, {
+    const res = await fetch(`/api/invoice/${id}`, {
       method: 'DELETE'
     });
 

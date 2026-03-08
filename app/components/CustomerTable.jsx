@@ -31,7 +31,7 @@ export default function CustomersTable() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await fetch(`http://localhost:3000/api/customer/${id}`, {
+      const res = await fetch(`/api/customer/${id}`, {
         method: "DELETE",
       });
 

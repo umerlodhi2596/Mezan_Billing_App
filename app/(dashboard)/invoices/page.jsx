@@ -15,7 +15,7 @@ export default function Invoices() {
 
   async function getAllInvoices(page, limit, search) {
     const res = await fetch(
-      `http://localhost:3000/api/invoice?page=${page}&limit=${limit}&search=${search}&sort=${sort}`,
+      `/api/invoice?page=${page}&limit=${limit}&search=${search}&sort=${sort}`,
     );
 
     if (!res.ok) {

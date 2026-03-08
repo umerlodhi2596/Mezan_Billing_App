@@ -21,7 +21,7 @@ export default function Invoice() {
   });
 
   const fetchNextInvoiceNumber = async () => {
-    const res = await fetch("http://localhost:3000/api/invoice/next-number");
+    const res = await fetch("/api/invoice/next-number");
     const data = await res.json();
     return data.nextInvoiceNumber;
   };
@@ -88,7 +88,7 @@ export default function Invoice() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3000/api/invoice", {
+      const res = await fetch("/api/invoice", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export default function Invoice() {
     }
 
     const res = await fetch(
-      `http://localhost:3000/api/customer?search=${value}&limit=5`,
+      `/api/customer?search=${value}&limit=5`,
     );
 
     const data = await res.json();

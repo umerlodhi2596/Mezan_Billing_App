@@ -21,7 +21,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function getDashboardData() {
       try {
-        const res = await fetch("http://localhost:3000/api/dashboard");
+        const res = await fetch("/api/dashboard");
         const data = await res.json();
         setStats(data);
       } catch (error) {

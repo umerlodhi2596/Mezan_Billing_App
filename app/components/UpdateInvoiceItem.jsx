@@ -48,7 +48,7 @@ export default function UpdateInvoiceItem() {
     const fetchInvoice = async () => {
       setLoadingInvoice(true);
       try {
-        const res = await fetch(`http://localhost:3000/api/invoice/${id}`);
+        const res = await fetch(`/api/invoice/${id}`);
         const data = await res.json();
 
         setInvoiceNumber(data?.invoice.invoiceNumber);
@@ -107,7 +107,7 @@ export default function UpdateInvoiceItem() {
     try {
       setLoading(true);
 
-      const res = await fetch(`http://localhost:3000/api/invoice/${id}`, {
+      const res = await fetch(`/api/invoice/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
