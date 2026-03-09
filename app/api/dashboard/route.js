@@ -28,7 +28,7 @@ export async function GET() {
     firstDayOfMonth.setDate(1);
     firstDayOfMonth.setHours(0, 0, 0, 0);
 
-    const monthlyTotal = await Invoice.aggregate([
+    const monthlyTotalData = await Invoice.aggregate([
       {
         $match: {
           status: "paid",
@@ -44,6 +44,8 @@ export async function GET() {
         },
       },
     ]);
+
+    const monthlyTotal = monthlyTotalData[0]?.total || 0;
 
     return NextResponse.json({
       totalCustomers,
