@@ -28,21 +28,22 @@ export async function GET() {
     firstDayOfMonth.setDate(1);
     firstDayOfMonth.setHours(0, 0, 0, 0);
 
-    const monthlySale = await Invoice.aggregate([
+    const monthlyTotal = await Invoice.aggregate([
       {
         $match: {
-          createdAt: { $gte: firstDayOfMonth },
+          status: "paid",
+          createdAt: {
+            $gte: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+          },
         },
       },
       {
         $group: {
           _id: null,
-          monthlyTotal: { $sum: "$totalAmount" },
+          total: { $sum: "$totalAmount" },
         },
       },
     ]);
-
-    const monthlyTotal = monthlySale[0]?.monthlyTotal || 0;
 
     return NextResponse.json({
       totalCustomers,
